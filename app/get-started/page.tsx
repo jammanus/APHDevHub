@@ -1,26 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AuthButtons from "@/app/components/AuthButtons";
 
 export const metadata: Metadata = {
   title: "Get Started — DevHub",
   description:
-    "Set up your Developer Knowledge Hub in minutes. Choose a plan and start centralizing your team's technical knowledge today.",
+    "Learn how DevHub works and set up your team's knowledge hub in minutes.",
 };
 
-/* ── SVG Icon Components ── */
+/* ── Icons ── */
 
-function IconCode({ className = "w-6 h-6" }: { className?: string }) {
+function IconCode({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-    </svg>
-  );
-}
-
-function IconCheck({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
     </svg>
   );
 }
@@ -41,292 +34,193 @@ function IconArrowLeft({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
-function IconRocket({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
-    </svg>
-  );
-}
-
-function IconUsers({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-    </svg>
-  );
-}
-
-function IconBuilding({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
-    </svg>
-  );
-}
-
-function IconShield({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-    </svg>
-  );
-}
-
-function IconTerminal({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
-    </svg>
-  );
-}
-
-function IconGitHub({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-    </svg>
-  );
-}
-
-/* ── Main Page ── */
+/* ── Page ── */
 
 export default function GetStarted() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       {/* ── Navbar ── */}
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-surface/70 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-2.5 text-xl font-bold tracking-tight">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-white text-sm font-bold shadow-lg shadow-primary/20">
-              <IconCode className="w-5 h-5" />
+      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-lg">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
+          <Link href="/" className="flex items-center gap-2.5 text-lg font-bold tracking-tight">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-red-600 text-white">
+              <IconCode className="w-4 h-4" />
             </span>
-            <span>Dev<span className="text-primary">Hub</span></span>
+            <span>Dev<span className="text-red-600">Hub</span></span>
           </Link>
           <div className="flex items-center gap-3">
             <Link
               href="/"
-              className="hidden items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium transition-colors hover:bg-surface-alt sm:inline-flex"
+              className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2 text-sm font-medium hover:bg-surface-alt transition-colors"
             >
               <IconArrowLeft className="w-4 h-4" />
-              Back to Home
+              Back
             </Link>
+            <AuthButtons />
           </div>
         </nav>
       </header>
 
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-grid">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(37,99,235,0.12),transparent)]" />
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        {/* Background layers */}
+        <div className="absolute inset-0 -z-20 bg-code-bg" />
+        {/* Grid overlay */}
+        <div
+          className="absolute inset-0 -z-10 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(59,130,246,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.5) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(37,99,235,0.15),transparent)]" />
+        <div className="absolute bottom-0 left-0 right-0 -z-10 h-40 bg-gradient-to-t from-background to-transparent" />
+        {/* Floating code fragments */}
+        <div className="absolute top-16 left-[8%] -z-10 hidden font-mono text-xs text-blue-400/10 leading-relaxed md:block animate-float">
+          <div>const hub = new DevHub();</div>
+          <div>await hub.init(config);</div>
+          <div>hub.publish(article);</div>
+        </div>
+        <div className="absolute bottom-24 right-[8%] -z-10 hidden font-mono text-xs text-blue-400/10 leading-relaxed md:block animate-float" style={{ animationDelay: "3s" }}>
+          <div>{"{"} search: true {"}"}</div>
+          <div>{"{"} categories: [...] {"}"}</div>
+          <div>{"{"} tags: [...] {"}"}</div>
+        </div>
+        <div className="absolute top-1/3 right-[15%] -z-10 hidden font-mono text-xs text-blue-400/[0.06] lg:block">
+          <div>$ devhub deploy --prod</div>
+          <div className="text-green-400/10">✓ deployed in 2.3s</div>
+        </div>
+
+        {/* Content */}
         <div className="mx-auto max-w-4xl px-6 py-20 text-center md:py-28">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/20 animate-pulse-glow">
-            <IconRocket className="w-8 h-8" />
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-400">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
+            Get Started
           </div>
-          <h1 className="text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-            Start Building Your{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Knowledge Hub
+
+          <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-white md:text-6xl lg:text-7xl">
+            Build your team&apos;s
+            <br />
+            <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-300 bg-clip-text text-transparent">
+              knowledge engine
             </span>
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-            Choose the plan that fits your team. Every plan includes full-text search,
-            collaborative editing, and structured documentation out of the box.
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400 md:text-xl">
+            DevHub is a centralized platform where your team publishes and organizes
+            technical articles, documentation, and best practices — searchable,
+            structured, and built for developers.
           </p>
+
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Link
+              href="/register"
+              className="group inline-flex h-12 items-center gap-2 rounded-lg bg-blue-600 px-8 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 hover:bg-blue-500 transition-colors"
+            >
+              Create free account
+              <IconArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <a
+              href="#steps"
+              className="inline-flex h-12 items-center gap-2 rounded-lg border border-zinc-700 px-8 text-sm font-medium text-zinc-300 hover:border-zinc-500 hover:text-white transition-colors"
+            >
+              See how it works
+            </a>
+          </div>
+
+          {/* Terminal teaser */}
+          <div className="mx-auto mt-14 max-w-lg text-left">
+            <div className="rounded-xl border border-zinc-800 bg-black/40 backdrop-blur-sm overflow-hidden">
+              <div className="flex items-center gap-2 border-b border-zinc-800 px-4 py-2.5">
+                <div className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                <div className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                <div className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                <span className="ml-2 font-mono text-[11px] text-zinc-600">terminal</span>
+              </div>
+              <div className="px-5 py-4 font-mono text-sm leading-relaxed">
+                <div className="text-zinc-500">$ devhub init my-knowledge-base</div>
+                <div className="mt-1 text-zinc-400">
+                  <span className="text-green-400">✓</span> Workspace created
+                </div>
+                <div className="text-zinc-400">
+                  <span className="text-green-400">✓</span> Categories configured
+                </div>
+                <div className="text-zinc-400">
+                  <span className="text-green-400">✓</span> Ready to publish
+                </div>
+                <div className="mt-2 text-zinc-500">$ devhub publish &quot;Getting&nbsp;Started&nbsp;Guide&quot;</div>
+                <div className="mt-1 text-blue-400">→ Published at /docs/getting-started</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── Pricing Plans ── */}
-      <section className="border-t border-border bg-surface py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-8 md:grid-cols-3">
-            {plans.map((plan) => (
-              <div
-                key={plan.name}
-                className={`relative flex flex-col rounded-2xl border p-8 transition-all duration-300 hover:shadow-xl ${
-                  plan.featured
-                    ? "border-primary/40 bg-background shadow-lg shadow-primary/10 ring-1 ring-primary/20"
-                    : "border-border bg-background hover:border-primary/20"
-                }`}
-              >
-                {plan.featured && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-primary to-accent px-4 py-1 text-xs font-semibold text-white shadow-md">
-                    Most Popular
+      {/* ── Steps ── */}
+      <section id="steps" className="border-t border-border py-16">
+        <div className="mx-auto max-w-3xl px-6 space-y-10">
+          {steps.map((step, i) => (
+            <div key={step.title} className="flex gap-5">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-red-600 text-sm font-bold text-white">
+                {i + 1}
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold">{step.title}</h3>
+                <p className="mt-1.5 text-muted leading-relaxed">{step.description}</p>
+                {step.code && (
+                  <div className="code-window mt-4">
+                    <div className="code-window-bar">
+                      <div className="code-window-dot bg-red-500" />
+                      <div className="code-window-dot bg-yellow-500" />
+                      <div className="code-window-dot bg-green-500" />
+                      <span className="ml-3 text-xs text-code-fg/40 font-mono">{step.codeLabel}</span>
+                    </div>
+                    <pre className="p-4 text-sm leading-relaxed text-code-fg font-mono overflow-x-auto">
+                      <code>{step.code}</code>
+                    </pre>
                   </div>
                 )}
-                <div className="mb-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${
-                      plan.featured
-                        ? "bg-primary text-white"
-                        : "bg-primary/10 text-primary"
-                    }`}>
-                      {plan.icon}
-                    </div>
-                    <h3 className="text-xl font-bold">{plan.name}</h3>
-                  </div>
-                  <p className="text-sm text-muted">{plan.description}</p>
-                </div>
-
-                <div className="mb-6">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-extrabold tracking-tight">{plan.price}</span>
-                    {plan.period && <span className="text-muted text-sm">{plan.period}</span>}
-                  </div>
-                  {plan.subprice && (
-                    <p className="mt-1 text-xs text-muted">{plan.subprice}</p>
-                  )}
-                </div>
-
-                <ul className="mb-8 flex-1 space-y-3">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2.5 text-sm">
-                      <IconCheck className={`w-4 h-4 mt-0.5 shrink-0 ${plan.featured ? "text-primary" : "text-success"}`} />
-                      <span className="text-muted">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="#setup"
-                  className={`inline-flex h-12 items-center justify-center gap-2 rounded-xl text-sm font-semibold transition-all ${
-                    plan.featured
-                      ? "bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35"
-                      : "border border-border bg-surface hover:bg-surface-alt"
-                  }`}
-                >
-                  {plan.cta}
-                  <IconArrowRight className="w-4 h-4" />
-                </a>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* ── Quick Setup Steps ── */}
-      <section id="setup" className="py-20 bg-grid">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="text-center mb-14">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-              <IconTerminal className="w-3.5 h-3.5" />
-              Quick Setup
-            </span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
-              Get your hub running in 3 steps
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted">
-              From sign-up to your first published article in under 5 minutes.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {setupSteps.map((step, i) => (
-              <div
-                key={step.title}
-                className="group rounded-2xl border border-border bg-surface p-6 transition-all hover:border-primary/30 hover:shadow-lg md:p-8"
-              >
-                <div className="flex items-start gap-5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-dark text-lg font-bold text-white shadow-md shadow-primary/20">
-                    {i + 1}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold">{step.title}</h3>
-                    <p className="mt-1.5 leading-relaxed text-muted">{step.description}</p>
-                    {step.code && (
-                      <div className="mt-4 overflow-hidden rounded-xl border border-border">
-                        <div className="flex items-center gap-2 border-b border-border bg-code-bg px-4 py-2">
-                          <div className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                          <div className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                          <div className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                          <span className="ml-2 text-xs text-code-fg/40 font-mono">{step.codeLabel}</span>
-                        </div>
-                        <pre className="bg-code-bg p-4 text-sm leading-relaxed text-code-fg font-mono overflow-x-auto">
-                          <code>{step.code}</code>
-                        </pre>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ ── */}
-      <section className="border-t border-border bg-surface py-20">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Frequently asked questions
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted">
-              Everything you need to know before getting started.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq) => (
-              <div
-                key={faq.question}
-                className="rounded-2xl border border-border bg-background p-6 transition-all hover:border-primary/20"
-              >
-                <h3 className="font-semibold">{faq.question}</h3>
-                <p className="mt-2 leading-relaxed text-muted text-sm">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Bottom CTA ── */}
-      <section className="relative overflow-hidden py-20">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Ready to get started?
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted">
-            Join hundreds of engineering teams who trust DevHub to manage their technical knowledge.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="#"
-              className="group inline-flex h-12 items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-primary-dark px-8 text-base font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:shadow-xl hover:shadow-primary/35"
+      {/* ── CTA ── */}
+      <section className="border-t border-border py-16">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <h2 className="text-2xl font-bold tracking-tight">Ready?</h2>
+          <p className="mt-2 text-muted">Create your account and start publishing in minutes.</p>
+          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <Link
+              href="/register"
+              className="group inline-flex h-12 items-center gap-2 rounded-md bg-red-600 px-7 text-sm font-semibold text-white shadow-lg shadow-red-600/20 hover:bg-red-700 transition-colors"
             >
-              Create Free Account
-              <IconArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a
-              href="#"
-              className="inline-flex h-12 items-center gap-2 rounded-xl border border-border bg-surface px-8 text-base font-semibold transition-colors hover:bg-surface-alt"
+              Create free account
+              <IconArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/login"
+              className="inline-flex h-12 items-center gap-2 rounded-md border border-border px-7 text-sm font-medium hover:bg-surface-alt transition-colors"
             >
-              Talk to Sales
-            </a>
+              Already have an account? Log in
+            </Link>
           </div>
-          <p className="mt-4 text-sm text-muted">
-            Free for teams up to 10 &middot; No credit card required &middot; Cancel anytime
-          </p>
         </div>
       </section>
 
       {/* ── Footer ── */}
-      <footer className="border-t border-border bg-surface">
+      <footer className="border-t border-border bg-surface-alt">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-muted md:flex-row">
           <Link href="/" className="flex items-center gap-2 font-semibold text-foreground">
-            <span className="inline-flex h-6 w-6 items-center justify-center rounded bg-gradient-to-br from-primary to-accent text-white text-[10px]">
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded bg-red-600 text-white text-[10px]">
               <IconCode className="w-3 h-3" />
             </span>
-            Dev<span className="text-primary">Hub</span>
+            <span>Dev<span className="text-red-600">Hub</span></span>
           </Link>
           <p>&copy; {new Date().getFullYear()} DevHub. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="transition-colors hover:text-foreground">Privacy</a>
-            <a href="#" className="transition-colors hover:text-foreground">Terms</a>
-            <a href="#" className="transition-colors hover:text-foreground">Contact</a>
-          </div>
         </div>
       </footer>
     </div>
@@ -335,141 +229,39 @@ export default function GetStarted() {
 
 /* ── Data ── */
 
-const plans = [
+const steps = [
   {
-    name: "Starter",
-    icon: <IconTerminal className="w-5 h-5" />,
-    description: "Perfect for small teams getting started with knowledge sharing.",
-    price: "Free",
-    period: "",
-    subprice: "Up to 10 team members",
-    featured: false,
-    cta: "Start Free",
-    features: [
-      "Up to 10 team members",
-      "500 articles & documents",
-      "Full-text search",
-      "Markdown editor",
-      "Basic tags & categories",
-      "Community support",
-    ],
-  },
-  {
-    name: "Team",
-    icon: <IconUsers className="w-5 h-5" />,
-    description: "For growing teams that need advanced collaboration and organization.",
-    price: "$12",
-    period: "/ user / month",
-    subprice: "Billed annually, or $15 monthly",
-    featured: true,
-    cta: "Start 14-Day Trial",
-    features: [
-      "Unlimited team members",
-      "Unlimited articles & documents",
-      "Advanced search with filters",
-      "Collaborative real-time editing",
-      "Onboarding learning paths",
-      "Version history & change tracking",
-      "SSO / SAML authentication",
-      "Priority email support",
-    ],
-  },
-  {
-    name: "Enterprise",
-    icon: <IconBuilding className="w-5 h-5" />,
-    description: "For organizations that need full control, compliance, and scale.",
-    price: "Custom",
-    period: "",
-    subprice: "Tailored to your organization",
-    featured: false,
-    cta: "Contact Sales",
-    features: [
-      "Everything in Team",
-      "Self-hosted deployment option",
-      "Advanced access control & RBAC",
-      "Audit logs & compliance reports",
-      "Custom integrations & API access",
-      "Dedicated account manager",
-      "99.99% uptime SLA",
-      "24/7 premium support",
-    ],
-  },
-];
-
-const setupSteps = [
-  {
-    title: "Create your workspace",
+    title: "Create your account",
     description:
-      "Sign up with your email or SSO provider, name your workspace, and invite your team. That's it — your hub is live.",
+      "Sign up with your email. Once verified, you can create a workspace and invite your team.",
     code: null,
     codeLabel: "",
   },
   {
-    title: "Import existing docs or start fresh",
+    title: "Set up your workspace",
     description:
-      "Bring in your existing knowledge from Markdown files, Notion exports, or Confluence. Or start from scratch with our templates.",
-    code: `# Import from Markdown files
-devhub import --source ./docs --format markdown
-
-# Import from Notion
-devhub import --source notion --token $NOTION_TOKEN
-
-# Import from Confluence
-devhub import --source confluence --url https://your-org.atlassian.net`,
-    codeLabel: "terminal",
-  },
-  {
-    title: "Organize, tag, and publish",
-    description:
-      "Structure your content with categories and tags, set up permissions for different teams, and hit publish. Your team can start searching and contributing immediately.",
+      "Define categories, invite contributors, and configure permissions. You can also import existing docs from Markdown files.",
     code: `# devhub.config.yml
 workspace:
   name: "Acme Engineering"
-  
+
 categories:
-  - name: "Architecture"
-    icon: "blueprint"
-  - name: "Onboarding"
-    icon: "rocket"
-  - name: "Runbooks"
-    icon: "shield"
+  - Architecture
+  - Onboarding
+  - Runbooks
 
 permissions:
-  default: "read"
-  contributors: ["engineering", "devops"]`,
+  default: read
+  contributors:
+    - engineering
+    - devops`,
     codeLabel: "devhub.config.yml",
   },
-];
-
-const faqs = [
   {
-    question: "Can I self-host DevHub?",
-    answer:
-      "Yes! Our Enterprise plan includes a self-hosted option. You can deploy DevHub on your own infrastructure using Docker or Kubernetes. We provide full deployment guides and support.",
-  },
-  {
-    question: "How does the free plan work?",
-    answer:
-      "The Starter plan is completely free for teams of up to 10 members. You get full-text search, a Markdown editor, and basic organization features — no credit card required, no trial expiration.",
-  },
-  {
-    question: "Can I import my existing documentation?",
-    answer:
-      "Absolutely. DevHub supports importing from Markdown, Notion, Confluence, and Google Docs. You can also use our REST API to programmatically sync content from any source.",
-  },
-  {
-    question: "Is my data secure?",
-    answer:
-      "Security is a top priority. All data is encrypted at rest and in transit. Enterprise plans include SSO/SAML, RBAC, audit logs, and SOC 2 Type II compliance. Self-hosted deployments give you full control over your data.",
-  },
-  {
-    question: "What kind of support do you offer?",
-    answer:
-      "Starter plans get community support through our forum and docs. Team plans include priority email support with a 24-hour response SLA. Enterprise plans get a dedicated account manager and 24/7 premium support.",
-  },
-  {
-    question: "Can I try the Team plan before committing?",
-    answer:
-      "Yes — every Team plan starts with a 14-day free trial with full access to all features. No credit card required to start your trial.",
+    title: "Write and publish",
+    description:
+      "Create articles using the Markdown editor. Preview your drafts, add tags, and publish when ready. Your team can search and discover articles immediately.",
+    code: null,
+    codeLabel: "",
   },
 ];
